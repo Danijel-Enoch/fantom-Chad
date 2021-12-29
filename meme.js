@@ -25,8 +25,9 @@ Moralis.start({ serverUrl, appId });
             var arrayItems=rawData.data.items;
             for (let i = 0; i < arrayItems.length; i++) {
                 console.log('daniel; is trying')
-                if(rawData.data.items[i].contract_address=cliffContractAddress && rawData.data.items[i].contract_address="CliffordInu"){
-                    console.log(rawData.data.items[i].balance +"test balnace");
+                if(rawData.data.items[i].contract_ticker_symbol=="CLIFF"){
+                    const cliff=rawData.data.items[i];
+                    console.log(cliff.balance+'cliff balance');
                 }
                 
             }
