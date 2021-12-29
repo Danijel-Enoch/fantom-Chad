@@ -42,6 +42,6 @@ document.getElementById("btn-walletconnect").onclick = loginWalletConnect ;
 
 let user = Moralis.User.current();
 if (user) {
-  const element = document.getElementById("btn-connect");
+  const element = document.getElementById("btn-popup");
             element.innerHTML = "Wallet Connected";
 }
