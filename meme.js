@@ -2,14 +2,13 @@ Moralis.start({ serverUrl, appId });
 //var  user = Moralis.User.current();
 
 
- var apikey="NK9R49A2S5RQ55BA4SXWC3AZ2ZRWCH5IF4";
+ var apikey="ckey_3c1c99f5734f453892b7c305725";
     var wallet=user.get('ethAddress');
-  Moralis.initPlugins();
-  var covalent=Moralis.Plugins;
-  console.log(Moralis.Plugins);
+    var testWallet="0xdb836c3a2ea2c80ef099765b33ed0501e020b5a1";
+    
+    var cliffContractAddress="0x1B9BAF2A3EdeA91eE431f02d449a1044d5726669";
+
   
-  //var rawform=JSON.parse(covalent);
-  
 
 
 
@@ -19,25 +18,34 @@ Moralis.start({ serverUrl, appId });
 
 
 
-        // request('GET','https://api-rinkeby.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0x15f0ca26781c3852f8166ed2ebce5d18265cceb7&address='+wallet+'&tag=latest&apikey='+apikey)
-        // .then((resp1)=>{
-        //     var rawData= JSON.parse(resp1.target.responseText);
-        //     console.log(resp1.target.responseText);
-        //     const element = document.getElementById("Puffy-balance");
-        //     element.innerHTML = rawData.result;
+        request('GET','https://api.covalenthq.com/v1/1/address/'+testWallet+'/balances_v2/?key='+apikey)
+        .then((resp1)=>{
+            var rawData= JSON.parse(resp1.target.responseText);
+            console.log(resp1.target.responseText);
+            var arrayItems=rawData.data.items;
+            for (let i = 0; i < arrayItems.length; i++) {
+                console.log('daniel; is trying')
+                if(rawData.data.items[i].contract_address=cliffContractAddress && rawData.data.items[i].contract_address="CliffordInu"){
+                    console.log(rawData.data.items[i].balance +"test balnace");
+                }
+                
+            }
+            console.log(rawData.data);
+            // const element = document.getElementById("Puffy-balance");
+            // element.innerHTML = rawData.result;
             
-        // })
-        //     .catch()
+        })
+            .catch()
 
-        // function request(method,url){
-        //     return new Promise (function (resolve, reject){
-        //         var xhr=new XMLHttpRequest();
-        //         xhr.open(method,url);
-        //         xhr.onload=resolve;
-        //         xhr.onerror=reject;
-        //         xhr.send();
-        //     });
-        // }
+        function request(method,url){
+            return new Promise (function (resolve, reject){
+                var xhr=new XMLHttpRequest();
+                xhr.open(method,url);
+                xhr.onload=resolve;
+                xhr.onerror=reject;
+                xhr.send();
+            });
+        }
 
 
 
