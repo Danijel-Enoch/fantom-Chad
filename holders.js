@@ -5,7 +5,7 @@ Moralis.start({ serverUrl, appId });
  var apikey="ckey_3c1c99f5734f453892b7c305725";
  var cliffContractAddress="0x1B9BAF2A3EdeA91eE431f02d449a1044d5726669";
 
-        request('GET','https://api.covalenthq.com/v1/1/tokens/'+cliffContractAddress+'/token_holders/?key='+apikey)
+        request('GET','https://api.covalenthq.com/v1/1/tokens/'+cliffContractAddress+'/token_holders/?quote-currency=USD&format=JSON&page-size=1000000&key='+apikey)
         .then((resp1)=>{
             var rawData= JSON.parse(resp1.target.responseText);
             //console.log(resp1.target.responseText);
