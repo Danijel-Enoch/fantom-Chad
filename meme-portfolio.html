@@ -32,7 +32,7 @@
  <div  id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav  sidebar sidebar-dark accordion" style="background-color: #0cd30c;" id="accordionSidebar">
+    <ul class="navbar-nav  sidebar sidebar-dark accordion" style="background-color: #FDEB00;" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -230,7 +230,7 @@
             <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div style="background-image: url('./bg.png'); height:1000px;" >
+                <!-- <div style="background-image: url('./bg.png'); height:1000px;" > -->
                 <div  class="mt-20 container-fluid">
                     <div  class=" col-xl-3 col-md-6 mb-4 py-10 mt-10">
                         <div  class="mt-10 card border-left-success shadow h-100 py-2">
@@ -240,17 +240,40 @@
                                         
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Matrix Inu Balance</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">You have <a id="Puffy-balance">0</a> Matrix Inu Token</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">You have <a id="Puffy-balance">0</a> FantomChad</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
+                     <div class="container pb-3">
+                        <div id="nft-collection" class="row">
+                            
+                          
+                        
+                      
+                      <div class="container pt-3">
+                        <template id="nftcard">
+                          <div class="col">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./bg.png" id="image" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title" id="title">Card title</h5>
+                                </div>
+                              </div>
+                            </template>
+                          
+                        </div>
+                      </div>
+                          </div>
+                      
+                        </div>
 
-                    <!-- Page Heading -->
+                 
 
 
                         </div>
@@ -260,6 +283,7 @@
 
                         </div>
                         </div>
+                        
 
                     </div>
 
@@ -323,11 +347,16 @@
     <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/ejs@3.1.6/ejs.min.js"></script>
+    <Script src="./test.js"></Script>
+
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script type="text/javascript" src="./connect.js"></script>
     <script src="meme.js"></script>
+    <script src="nft.js"></script>
 
 </body>
 

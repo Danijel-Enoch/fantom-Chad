@@ -23,8 +23,8 @@ async function loginWalletConnect() {
     user = await Moralis.authenticate({ provider: "walletconnect"})
       .then(function (user) {
         console.log("logged in user:", user);
-        console.log(user.get("ethAddress"));
-        console.log(Moralis.user.Address);
+        //console.log(user.get("ethAddress"));
+        //console.log(Moralis.user.Address);
       })
       .catch(function (error) {
         console.log(error);

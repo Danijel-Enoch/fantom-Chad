@@ -18,7 +18,7 @@ Moralis.start({ serverUrl, appId });
 
 
 
-        request('GET','https://api.covalenthq.com/v1/1/address/'+wallet+'/balances_v2/?key='+apikey)
+        request('GET','https://api.covalenthq.com/v1/250/address/'+wallet+'/balances_v2/?key='+apikey)
         .then((resp1)=>{
             var rawData= JSON.parse(resp1.target.responseText);
             //console.log(resp1.target.responseText);

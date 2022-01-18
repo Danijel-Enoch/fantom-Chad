@@ -1,23 +1,26 @@
-var apikey="NK9R49A2S5RQ55BA4SXWC3AZ2ZRWCH5IF4";
-        var wallet="0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae";
+  let price;
+        //Get token price on PancakeSwap v2 BSC
+        async function getprice(){
+            const options = {
+                address: "0x658b0c7613e890ee50b8c4bc6a3f41ef411208ad",
+                chain: "ftm",
+              };
+              const token = await Moralis.Web3API.token.getTokenPrice(options);
+              console.log(token.usdPrice);
+              
+              console.log(token.usdPrice.toFixed(2))
+             price=token.usdPrice.toFixed(2);
+             const element = document.getElementById("eth-balance");
+                element.innerHTML = token.usdPrice.toFixed(2);
 
-        request('GET','https://api-rinkeby.etherscan.io/api?module=stats&action=ethprice&apikey='+apikey)
-        .then((resp1)=>{
-            var rawData= JSON.parse(resp1.target.responseText);
-            console.log(rawData.result.ethusd);
-            const element = document.getElementById("eth-balance");
-                element.innerHTML = rawData.result.ethusd;
-        })
-            .catch()
 
-        function request(method,url){
-            return new Promise (function (resolve, reject){
-                var xhr=new XMLHttpRequest();
-                xhr.open(method,url);
-                xhr.onload=resolve;
-                xhr.onerror=reject;
-                xhr.send();
-            });
         }
-const element = document.getElementById("eth-balance");
-element.innerHTML = rawData.result.ethusd;
+
+        getprice()
+
+
+  //////////////
+
+//   console.log(String(price));
+// const element = document.getElementById("eth-balance");
+// element.innerHTML = price;
