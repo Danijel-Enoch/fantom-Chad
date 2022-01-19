@@ -12,7 +12,7 @@ let URIarry = [];
 
 async function Da() {
     const options = {
-        address: '0xa61f8c3da4d744826e371c431683adef2c3f9670'
+        address: wallet
     };
     const fantomNFt = await Moralis.Web3API.account.getNFTs(options);
         const jsonNFT=JSON.stringify(fantomNFt);
@@ -37,8 +37,8 @@ async function Da() {
         document.getElementById("menu-mobile"+index)
 
         });
-    }else if(fantomNFt.result.length===0){
-        document.getElementById("nftcard")="You do not have any NFT";
+    }else if(fantomNFt.result.length===null){
+        document.getElementById("nftcard").innerHTML="You do not have any NFT";
     }
 
    // console.log(wallet);
