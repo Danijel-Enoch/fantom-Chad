@@ -32,16 +32,16 @@ async function Da() {
                     document.getElementById("nft-collection").appendChild(clonedMenu);
                 }).catch(console.log)
             //
-            console.log(index);
+            //console.log(index);
         
         document.getElementById("menu-mobile"+index)
 
         });
     }else if(fantomNFt.result.length===0){
-        console.log("You do not have any NFT");
+        document.getElementById("nftcard")="You do not have any NFT";
     }
 
-    console.log(wallet);
+   // console.log(wallet);
 
 }
  
