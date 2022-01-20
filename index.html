@@ -248,7 +248,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
                                                 Market Cap</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div  class="h5 mb-0 font-weight-bold text-gray-800">$<h5 class="font-weight-bold" id="marketcapValue">0</h5></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -475,11 +475,12 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://github.com/WalletConnect/walletconnect-monorepo/releases/download/1.6.2/web3-provider.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- This is our example code -->
     <script type="text/javascript" src="./connect.js"></script>
     <script type="text/javascript" src="./getEthBalance.js"></script>
     <script type="text/javascript" src="./holders.js"></script>
+    <script type="text/javascript" src="./marketcap.js"></script>
 
 </body>
 
