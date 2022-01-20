@@ -6,9 +6,9 @@
                 chain: "eth",
               };
               const token = await Moralis.Web3API.token.getTokenPrice(options);
-              console.log(token.usdPrice);
+              //console.log(token.usdPrice);
               
-              console.log(token.usdPrice.toFixed(2))
+             // console.log(token.usdPrice.toFixed(2))
              price=token.usdPrice.toFixed(2);
              const element = document.getElementById("eth-balance");
                 element.innerHTML = token.usdPrice.toFixed(2);
