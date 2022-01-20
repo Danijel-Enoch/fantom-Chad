@@ -46,7 +46,7 @@ const data = {
   datasets: [{
     label: '30 days Price Overview of Fantom',
     backgroundColor: 'rgb(220,220,220)',
-    borderColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(63, 59, 59)',
     data: priceArray,
   }]
 };
