@@ -23,9 +23,9 @@ axios.get("https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/US
   .then(response => {
     let cryptoArray = response.data.data[0].prices;
     cryptoArray.forEach(element => {
-      console.log(element.price);
+      //console.log(element.price);
       priceArray.push(element.price)
-      console.log(element.date);
+     // console.log(element.date);
       labels.push(element.date);
     });
     //console.log( cryptoArray );
@@ -36,8 +36,8 @@ axios.get("https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/US
 //get price array
 //get date Array
 
-console.log(labels);
-console.log(priceArray);
+// console.log(labels);
+// console.log(priceArray);
 
 
 
