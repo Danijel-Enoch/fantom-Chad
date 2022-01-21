@@ -13,13 +13,13 @@ today = yyyy + '-' + mm + '-' + dd;
 //console.log(today);
 
 var date = new Date();
-date.setDate(date.getDate() - 30);
+date.setDate(date.getDate() - 7);
 var dateString = date.toISOString().split('T')[0];
 //console.log(dateString);
 
 //send api reques from last year september to today
 
-axios.get("https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0x4e15361fd6b4bb609fa63c81a2be19d873717870/?quote-currency=USD&format=JSON&from=" + dateString + "&to=" + today + "&page-size=100000&page-number=1&prices-at-asc=true&key=ckey_3c1c99f5734f453892b7c305725")
+axios.get("https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/250/USD/0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4/?quote-currency=USD&format=JSON&from=" + dateString + "&to=" + today + "&page-size=100000&page-number=1&prices-at-asc=true&key=ckey_3c1c99f5734f453892b7c305725")
   .then(response => {
     let cryptoArray = response.data.data[0].prices;
     cryptoArray.forEach(element => {

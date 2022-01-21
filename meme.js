@@ -6,7 +6,7 @@ Moralis.start({ serverUrl, appId });
     var wallet=user.get('ethAddress');
     var testWallet="0x6e6d88411000898ca77c54c4b512b8b05a128d26";
     
-    var cliffContractAddress="0x1B9BAF2A3EdeA91eE431f02d449a1044d5726669";
+    var cliffContractAddress="0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4";
 
   
 
@@ -25,7 +25,7 @@ Moralis.start({ serverUrl, appId });
             var arrayItems=rawData.data.items;
             for (let i = 0; i < arrayItems.length; i++) {
                 console.log('daniel; is trying')
-                if(rawData.data.items[i].contract_ticker_symbol=="CLIFF"){
+                if(rawData.data.items[i].contract_ticker_symbol=="FCC"){
                     const cliff=rawData.data.items[i];
                     //console.log(cliff.balance+'cliff balance');
                     const element = document.getElementById("Puffy-balance");

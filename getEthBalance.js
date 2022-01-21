@@ -2,8 +2,8 @@
         //Get token price on PancakeSwap v2 BSC
         async function getprice(){
             const options = {
-                address: "0x4e15361fd6b4bb609fa63c81a2be19d873717870",
-                chain: "eth",
+                address: "0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4",
+                chain: "ftm",
               };
               const token = await Moralis.Web3API.token.getTokenPrice(options);
               //console.log(token.usdPrice);

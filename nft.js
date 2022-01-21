@@ -7,7 +7,7 @@ Moralis.start({
 
 var wallet = user.get('ethAddress');
 var testWallet = "0x6e6d88411000898ca77c54c4b512b8b05a128d26";
-var cliffContractAddress = "0xa61f8c3da4d744826e371c431683adef2c3f9670";
+var cliffContractAddress = "0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4";
 let URIarry = [];
 
 async function Da() {
