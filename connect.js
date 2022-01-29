@@ -1,5 +1,5 @@
-const serverUrl = "https://gkhkhetunpll.usemoralis.com:2053/server";
-const appId = "SfAsVLLbYHL7YlRex9flXKXowIP2igx3qO8rKpRX";
+const serverUrl = "https://1rwfep58uoos.usemoralis.com:2053/server";
+const appId = "8r6otXdm3zWSl8ga7zNK4fEg8VzihNhwYC0A9qnp";
 Moralis.start({ serverUrl, appId });
 
 /* Authentication code */
