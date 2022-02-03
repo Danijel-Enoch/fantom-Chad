@@ -51,32 +51,32 @@
             </li>
           <span class="small pl-4 mt-4 text-uppercase font-weight-bold">Market</span>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="index.html#">
-              <i class="ti-bar-chart menu-icon"></i>
+            <a class="nav-link" target="_blank" href="/">
+              <i class="ti-control-record menu-icon"></i>
               <span class="menu-title">CoinMarketCap</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="index.html#">
-              <i class="ti-check-box menu-icon"></i>
+            <a class="nav-link" target="_blank" href="/">
+              <i class="ti-control-record menu-icon"></i>
               <span class="menu-title">CoinGecko</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://www.dextools.io/app/fantom/pair-explorer/0x636a6fa77a371f174b65b433116eabaded82aff4">
-              <i class="ti-dropbox menu-icon"></i>
-              <span class="menu-title">DexTools</span>
+            <a class="nav-link" target="_blank" href="https://dexscreener.com/fantom/0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4">
+              <i class="ti-control-record menu-icon"></i>
+              <span class="menu-title">DexScreener</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" target="_blank" href="https://spookyswap.finance/swap?outputCurrency=0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4">
-              <i class="ti-exchange-vertical menu-icon"></i>
+              <i class="ti-control-record menu-icon"></i>
               <span class="menu-title">Spooky Swap</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" target="_blank" href="https://dx.app/app/v3/dxlockview?id=0&add=0x0Fff8b43Fac8836Ecf7817f2D23c4aEAB1Ac1036&type=lplock&chain=Fantom">
-              <i class="ti-lock menu-icon"></i>
+              <i class="ti-control-record menu-icon"></i>
               <span class="menu-title">Lock Liquidity</span>
             </a>
           </li>
@@ -126,7 +126,7 @@
           </div>
           <footer class="footer">
             <div class="d-sm-flex justify-content-center">
-              <span class="float-none d-block mt-1 mt-sm-0 text-center"> Copyright &copy; 2022. <i class="ti-wallet text-warning ml-3 mr-1"></i> <a href="/">Fantom Chad</a></span>
+              <span class="float-none d-block mt-1 mt-sm-0 text-center"> Copyright &copy; 2022. <i class="ti-wallet text-warning ml-3 mr-1"></i> <a href="https://fantomchad.capital/">Fantom Chad</a></span>
             </div>
           </footer>
         </div>
@@ -139,18 +139,6 @@
         Router,
         ContainerRouteRenderer,
       } from "https://unpkg.com/route-it@1.1.0/dist/index.js";
-
-      window.rpc_url = 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161';
-      window.token_address = '0xcf480805b36644bc587861b0d19de6222bf9d56c';
-      window.busdlp_address = '';
-      window.bnblp_address = '0xb9686136c5e6A5E58a95Aa69E50ef0B1861c316f';
-      window.fixed_decimal = '8';
-      window.interest = '1.8999';
-      window.next_reward_time = '1800';
-      window.next_rebase_min = '30';
-      window.network_id = '250';
-      window.bnb_busd_lp_address = '0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852';
-      window.wbnb_address = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 
       const parent = document.querySelector("#content");
       const container = new ContainerRouteRenderer(parent);
@@ -208,48 +196,43 @@
     <script src="assets/js/constant.js"></script>
     <script src="assets/js/custom.js"></script>
     <template id="page-home" title="Home">
-      <div class="col-12">
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-3 col-xl-3 grid-margin stretch-card">
-            <div class="card bg-github">
-              <div class="card-body">
-                <p class="card-title">Fantom Chad Price</p>
-                <h3>0</h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-3 col-xl-3 grid-margin stretch-card">
-            <div class="card bg-warning">
-              <div class="card-body">
-                <p class="card-title">Holders Price</p>
-                <h3><span id="holderscount">0</span></h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-3 col-xl-3 grid-margin stretch-card">
-            <div class="card bg-github">
-              <div class="card-body">
-                <p class="card-title">FCC Price</p>
-                <h3>$ 0 </h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-3 col-xl-3 grid-margin stretch-card">
-            <div class="card bg-warning">
-              <div class="card-body">
-                <p class="card-title">Market Cap</p>
-                <h3><span id="marketcap">0</span></h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="col-md-6 col-xl-6 stretch-card">
         <div class="card">
           <div class="card-body">
-            <h6 class="card-title mb-0">Price Overview</h6>
-            <div class="table-responsive mt-3">
-              <canvas id="fccAreaChart"></canvas>
+            <h6 class="card-title mb-0">FantomChadCapital Information</h6>
+            <div class="w-100 mt-3">
+              <div class="table-responsive dashboard-table-info">
+                <table class="table center-aligned-table">
+                  <thead>
+                    <tr>
+                      <th class="border-bottom-0 font-weight-bold">TITLE</th>
+                      <th class="border-bottom-0 font-weight-bold">LINK</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ftmscan Contract ID</td>
+                      <td>0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4</td>
+                    </tr>
+                    <tr>
+                      <td>$FCC DexScreener</td>
+                      <td><a href="https://dexscreener.com/fantom/0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4">Redirect to DexScreener</a></td>
+                    </tr>
+                    <tr>
+                      <td>Treasury Wallet Address</td>
+                      <td><a href="https://ftmscan.com/address/0xb190496389062ad089a7b94195981f39e0e5817a">Redirect to FTMScan</a></td>
+                    </tr>
+                    <tr>
+                      <td>Buy $FCC on SpookySwap</td>
+                      <td><a href="https://spookyswap.finance/swap?outputCurrency=0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4">Redirect to SpookySwap</a></td>
+                    </tr>
+                    <tr>
+                      <td>Holders Count</td>
+                      <td> <span id="holderscount">00</span> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -257,9 +240,32 @@
       <div class="col-md-6 col-xl-6 stretch-card metrics">
         <div class="card">
           <div class="card-body">
-            <h6 class="card-title mb-0">Holder Metrics</h6>
-            <div class="card-body">
-              <canvas id="fccHolderChart"></canvas>
+            <h6 class="card-title mb-0">FantomChad Capital Finance Metric</h6>
+            <div class="w-100 mt-3">
+              <div class="table-responsive dashboard-table-info">
+                <table class="table center-aligned-table">
+                  <thead>
+                    <tr>
+                      <th class="border-bottom-0 font-weight-bold">METRIC</th>
+                      <th class="border-bottom-0 font-weight-bold">VALUE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Total Market Cap</td>
+                      <td><span id="marketcap">00</span></td>
+                    </tr>
+                    <tr>
+                      <td>Circulating Supply</td>
+                      <td><span id="circulating_supply"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Price</td>
+                      <td><span id="token_price">0</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

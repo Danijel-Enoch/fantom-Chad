@@ -1,11 +1,8 @@
 $(document).ready(async function() {
   //await onConnect();
 
-  await drawCharts();
-
 	let marketCap = await getMarketCap();
-	$('#marketcap').text(`$ ${marketCap}`);
-	countDownNextRebase();
+  $('#marketcap').text(`$${marketCap}`);
 
   await (async () => {
     let holders = 0;
@@ -157,19 +154,34 @@ async function getHolders(page) {
   return items.length;
 }
 
-async function getMarketCap(result=0)
-{
-  const data = await request(
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=fantom&order=market_cap_desc&per_page=1000&page=1&sparkline=false"
+async function getUSDPrice() {
+  // get monthly price list
+  const {
+    data: [{ prices }],
+  } = await request(
+    "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/250/USD/0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4/?quote-currency=USD&format=JSON&key=ckey_3c1c99f5734f453892b7c305725"
+    );
+  return prices[0].price;
+}
+
+async function getTokenSupply() {
+  const { result } = await request(
+    "https://api.ftmscan.com/api?module=stats&action=tokensupply&contractaddress=0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4&apikey=7593P9NKG91CKFW2GA5PT68RZ61GVEC7H2"
   );
 
-  data.forEach((item) => {
-    if (item.id == "fantom") {
-      result = item.market_cap.toLocaleString();
-    }
-  });
-
   return result;
+}
+
+async function getMarketCap()
+{
+  /** @type {number} */
+  const supply = parseFloat(await getTokenSupply());
+  const price = parseFloat(await getUSDPrice());
+
+  $("#token_price").text(`$${price}`);
+  $("#circulating_supply").text((supply * 1).toLocaleString());
+
+  return (supply * price).toLocaleString();
 }
 
 async function drawCharts() {
@@ -228,32 +240,6 @@ async function drawCharts() {
     },
     options: {},
   });
-}
-
-async function countDownNextRebase()
-{
-	setInterval(function () {
-		var d = new Date();
-		var seconds = d.getMinutes() * 60 + d.getSeconds(); //convet 00:00 to seconds for easier caculation
-		var fiveMin = 60 * next_rebase_min; //five minutes is 300 seconds!
-		var timeleft = fiveMin - seconds % fiveMin; // let's say 01:30, then current seconds is 90, 90%300 = 90, then 300-90 = 210. That's the time left!
-		var timeleft1 = fiveMin - seconds % fiveMin; // let's say 01:30, then current seconds is 90, 90%300 = 90, then 300-90 = 210. That's the time left!
-		timeleft = parseInt(timeleft / 60);
-		var count = timeleft.toString().length;
-		
-		if(parseInt(timeleft) == 0){
-			setupConnected()
-		}
-		if(count == 1){
-			var result =  '00 : 0' + parseInt(timeleft) + ':' + timeleft1 % 60; //formart seconds into 00:00 
-		}
-		else{
-			var result =  '00 : ' + parseInt(timeleft) + ':' + timeleft1 % 60;
-		}
-		// document.getElementById('tiles').innerHTML = result;
-		$('#tiles span').text(result)
-
-	}, 500) //calling it every 0.5 second to do a count down
 }
 
 
