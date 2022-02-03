@@ -1,3 +1,0 @@
-connect Wallet pop up
-change Logo and Color
-holders api
