@@ -1,9 +1,10 @@
 $(document).ready(async function() {
   //await onConnect();
-
-	let marketCap = await getMarketCap();
-  $('#marketcap').text(`$${marketCap}`);
-
+  setInterval(async (marketCap, holders) => {
+    marketCap = await getMarketCap();
+    $("#marketcap").text(`$${marketCap}`);
+  }, 1500);
+  
   await (async () => {
     let holders = 0;
     let lastCount = -1;
@@ -11,11 +12,9 @@ $(document).ready(async function() {
 
     while (lastCount != holders) {
       lastCount = holders;
-      try {
-        holders = await getHolders(page);
-      }catch(e){}
+      holders = await getHolders(page);
       page += 24;
-      $("#holderscount").text(holders + "+");
+      $("#holderscount").text(holders);
     }
   })();
 });
@@ -51,6 +50,12 @@ async function setupConnected(first=null){
 $(document).on('click', '.connectToNetwork', async  function(){
     localStorage.clear()
 	onConnect()
+});
+
+$(document).on("click", ".logout", async function () {
+  localStorage.clear();
+  $(".wallet-app-address").text("Connect Wallet");
+  closeApp();
 });
 
 async function onConnect(){
@@ -102,17 +107,6 @@ async function onConnect(){
 		return;
 	}
 }
-$(document).on('click', '.logout', async  function(){
-    localStorage.clear();
-    $('.wallet-app-address').text('Connect Wallet')
-    closeApp();
-});
-
-let apikey = "ckey_3c1c99f5734f453892b7c305725";
-let wallet = "0x6e6d88411000898ca77c54c4b512b8b05a128d26";
-let testWallet = "0x6e6d88411000898ca77c54c4b512b8b05a128d26";
-
-let cliffContractAddress = "0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4";
 
 function request(url) {
   return new Promise(function (resolve, reject) {
@@ -169,79 +163,20 @@ async function getTokenSupply() {
     "https://api.ftmscan.com/api?module=stats&action=tokensupply&contractaddress=0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4&apikey=7593P9NKG91CKFW2GA5PT68RZ61GVEC7H2"
   );
 
-  return result;
+  return parseInt(result) / 10**18;
 }
 
 async function getMarketCap()
 {
   /** @type {number} */
-  const supply = parseFloat(await getTokenSupply());
-  const price = parseFloat(await getUSDPrice());
+  const supply = await getTokenSupply();
+  const price = parseFloat(await getUSDPrice()).toFixed(6);
 
   $("#token_price").text(`$${price}`);
   $("#circulating_supply").text((supply * 1).toLocaleString());
 
-  return (supply * price).toLocaleString();
+  return ((supply - 100000000) * price).toLocaleString();
 }
-
-async function drawCharts() {
-  const areaChart = document.getElementById("fccAreaChart");
-  const holderChart = document.getElementById("fccHolderChart");
-  if (!areaChart || !holderChart) return;
-  const labels = [];
-
-  //get Todays Date
-  let today = new Date();
-  const dd = String(today.getDate()).padStart(2, "0");
-  const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  const yyyy = today.getFullYear();
-
-  today = yyyy + "-" + mm + "-" + dd;
-  //console.log(today);
-
-  const date = new Date();
-  date.setDate(date.getDate() - 7);
-  const dateString = date.toISOString().split("T")[0];
-
-  // get monthly price list
-  const { data: [{ prices }] } = await request(
-      "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/250/USD/0xC7d8515DE74e6d04D9ca0EB09e98079135488dF4/?quote-currency=USD&format=JSON&from=" +
-        dateString +
-        "&to=" +
-        today +
-        "&page-size=100000&page-number=1&prices-at-asc=true&key=ckey_3c1c99f5734f453892b7c305725"
-    );
-
-  new Chart(
-    areaChart, {
-    type: "line",
-    data: {
-    datasets: [
-      {
-        label: "30 days Price Overview of Fantom",
-        backgroundColor: "rgb(220,220,220)",
-        borderColor: "rgb(63, 59, 59)",
-        data: prices.map(e => {
-          labels.push(e.date);
-          return e.price
-        }),
-      },
-    ],
-    labels: labels,
-  },
-    options: {},
-  });
-  new Chart(
-    holderChart, {
-    type: "doughnut",
-    data: {
-      datasets: [],
-      labels: [""]
-    },
-    options: {},
-  });
-}
-
 
 async function getUserTokenBalance(address)
 {
