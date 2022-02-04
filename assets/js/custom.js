@@ -20,35 +20,33 @@ $(document).ready(async function() {
 });
 
 async function setupConnected(first=null){
-  let chainid = await getchainId();
-  
-	if(chainid == network_id){
-		if(localStorage.getItem(ADDRESS) != null && localStorage.getItem(ADDRESS).length > 0){
-			web3.eth.defaultAccount = localStorage.getItem(ADDRESS)
-			$('.connectToNetwork').remove();
-	    	$(".connectWallet").html(
-          '<button class="btn btn-lg bg-chad btn-block text-center connected logout"><i class="ti-credit-card mr-1"></i> ' +
-            shortText(localStorage.getItem(ADDRESS)) +
-            "</button>"
-        );
-   			$('.wallet-app-address').text(shortText(localStorage.getItem(ADDRESS)))
+	if (
+    localStorage.getItem(ADDRESS) != null &&
+    localStorage.getItem(ADDRESS).length > 0
+  ) {
+    web3.eth.defaultAccount = localStorage.getItem(ADDRESS);
+    $(".connectToNetwork").remove();
+    $(".connectWallet").html(
+      '<button class="btn btn-lg bg-chad btn-block text-center connected logout"><i class="ti-credit-card mr-1"></i> ' +
+        shortText(localStorage.getItem(ADDRESS)) +
+        "</button>"
+    );
+    $(".wallet-app-address").text(shortText(localStorage.getItem(ADDRESS)));
 
-			let user_balance = await getUserTokenBalance(localStorage.getItem(ADDRESS));
-			$('#user_balance').text(user_balance);
-		}
-	}
-	else{
-		localStorage.clear()
-		closeApp();
-		if(first !== true ){
-			toastr.error('Connect To Fantom  Opera !');
-		}
-	}
+    let user_balance = await getUserTokenBalance(localStorage.getItem(ADDRESS));
+    $("#user_balance").text(user_balance);
+  } else {
+    localStorage.clear();
+    closeApp();
+    if (first !== true) {
+      toastr.error("Connect To Fantom  Opera !");
+    }
+  }
 
 }
 
 $(document).on('click', '.connectToNetwork', async  function(){
-    localStorage.clear()
+  localStorage.clear()
 	onConnect()
 });
 
