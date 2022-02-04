@@ -1,24 +1,3 @@
-$(document).ready(async function() {
-  //await onConnect();
-  setInterval(async (marketCap, holders) => {
-    marketCap = await getMarketCap();
-    $("#marketcap").text(`$${marketCap}`);
-  }, 1500);
-  
-  await (async () => {
-    let holders = 0;
-    let lastCount = -1;
-    let page = 1;
-
-    while (lastCount != holders) {
-      lastCount = holders;
-      holders = await getHolders(page);
-      page += 24;
-      $("#holderscount").text(holders);
-    }
-  })();
-});
-
 async function setupConnected(first=null){
 	if (
     localStorage.getItem(ADDRESS) != null &&

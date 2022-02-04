@@ -165,6 +165,27 @@
       document.onreadystatechange = function () {
         if (document.readyState === "complete") {
           new Router(new Routes(), container).run();
+          $(document).ready(async function() {
+            //await onConnect();
+            setInterval(async (marketCap, holders) => {
+              marketCap = await getMarketCap();
+              $("#marketcap").text(`$${marketCap}`);
+            }, 1500);
+            
+            await (async () => {
+              let holders = 0;
+              let lastCount = -1;
+              let page = 1;
+
+              while (lastCount != holders) {
+                lastCount = holders;
+                holders = await getHolders(page);
+                page += 24;
+                $("#holderscount").text(holders);
+              }
+            })();
+          });
+
         }
       };
     </script>
@@ -242,7 +263,7 @@
                       <td><span id="marketcap">00</span></td>
                     </tr>
                     <tr>
-                      <td>Circulating Supply</td>
+                      <td>Total Supply</td>
                       <td><span id="circulating_supply"></span></td>
                     </tr>
                     <tr>
